@@ -18,8 +18,6 @@ const getBuffer = async url => {
     const {width, height} = img1;
     const diff = new PNG({width, height});
      
-    console.log(img1.height)
-    console.log(img2.height)
     const diffPixel =  pixelmatch(img1.data, img2.data, diff.data, width, height, {threshold: 0.1});
     const totalPixel = width * height
     
@@ -28,8 +26,8 @@ const getBuffer = async url => {
         totalPixel, 
         match : 100 - ((diffPixel * 100) / totalPixel)
     }
-    
-      response.send(data);
+    return data 
+      //response.send(data);
 
 
 
