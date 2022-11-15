@@ -2,7 +2,7 @@
 const axios = require('axios')
 const PNG = require('pngjs').PNG;
 const pixelmatch = require('pixelmatch');
-const fs = require('fs');
+ 
 const getBuffer = async url => {
     const response = await axios(url, { responseType: 'arraybuffer' })
     const buffer64 = Buffer.from(response.data, 'utf8') 
@@ -21,7 +21,7 @@ const getBuffer = async url => {
     const diffPixel =  pixelmatch(img1.data, img2.data, diff.data, width, height, {threshold: 0});
     const totalPixel = width * height
     const ramdom= new Date().getTime();
-    fs.writeFileSync('./diff/'+ramdom+'.png', PNG.sync.write(diff));
+    //fs.writeFileSync('./diff/'+ramdom+'.png', PNG.sync.write(diff));
     const data = {
         diffPixel, 
         totalPixel, 
