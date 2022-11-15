@@ -6,6 +6,7 @@ const app = express();
 app.use(express.json())
 const {getDiff} = require('./pixel')
 const nodeHtmlToImage = require('node-html-to-image');
+const { response } = require('express');
 // https://us-central1-gogokodo.cloudfunctions.net/pixelDiff
 
 
@@ -64,7 +65,9 @@ fs.readFile('./pc.png', (err, data)=>{
     if(err) {
         throw err;
     }})
-
+    app.get(`/api`, async function(req, res) {
+      res.send('salutation')
+    })
 app.post(`/api`, async function(req, res) {
   
  
